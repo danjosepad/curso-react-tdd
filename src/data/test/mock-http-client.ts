@@ -1,5 +1,4 @@
-import { HttpPostClient, HttpPostParams } from '@/data/protocols/http/http-post-client'
-import { HttpResponse, HttpStatusCode } from '../protocols/http/http-response'
+import { HttpResponse, HttpStatusCode, HttpPostClient, HttpPostParams } from '../protocols/http'
 
 // Export all classes based on HttpClient (POST, GET...)
 export class HttpPostClientSpy<T, R> implements HttpPostClient<T, R> {
@@ -9,6 +8,7 @@ export class HttpPostClientSpy<T, R> implements HttpPostClient<T, R> {
     statusCode: HttpStatusCode.ok
   }
 
+  // T = body type | R = response type
   async post (params: HttpPostParams<T>): Promise<HttpResponse<R>> {
     this.url = params.url
     this.body = params.body
